@@ -16,6 +16,7 @@ import { PagosController } from './pagos/pagos.controller';
 import { MantenimientoController } from './mantenimiento/mantenimiento.controller';
 import { ClienteService } from './cliente/cliente.service';
 import { PropietarioService } from './propietario/propietario.service';
+import { MantenimientoService } from './mantenimiento/mantenimiento.service';
 
 @Module({
   imports: [
@@ -32,6 +33,8 @@ import { PropietarioService } from './propietario/propietario.service';
     TypeOrmModule.forFeature([Cliente, Contrato_alquiler, Mantenimiento, Pago, Propiedad, Propietario]),
   ],
   controllers: [AppController, ClienteController, ContratosAlquilerController, MantenimientoController, PagosController, PropiedadesController, PropietarioController],
-  providers: [AppService, ClienteService, PropietarioService],
+
+  providers: [AppService, ClienteService, PropietarioService,MantenimientoService],
+
 })
 export class AppModule { }

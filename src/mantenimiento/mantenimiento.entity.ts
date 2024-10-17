@@ -6,7 +6,7 @@ export class Mantenimiento {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Propiedad, (propiedad) => propiedad.id)
+  @ManyToOne(() => Propiedad, (propiedad) => propiedad.id)  // nullable: false evita nulos
   propiedad: Propiedad;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
