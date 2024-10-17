@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, BeforeInsert } from 'typeorm';
 import { Propiedad } from 'src/propiedades/propiedad.entity';
 import { Contrato_alquiler } from 'src/contratos_alquiler/contratos_alquiler.entity';
+import * as bcrypt from 'bcrypt';
 
 @Entity('propietario')
 export class Propietario {
@@ -19,6 +20,8 @@ export class Propietario {
   @Column()
   direccion: string;
 
+  @Column()
+  password: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   fechaRegistro: Date;
@@ -28,4 +31,9 @@ export class Propietario {
 
   @OneToMany(() => Contrato_alquiler, (contrato_alquiler) => contrato_alquiler.clienteId)
   contratos: Contrato_alquiler[];
+
+  @BeforeInsert()
+  async hashPassword() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
 }
