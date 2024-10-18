@@ -1,12 +1,17 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne  } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany  } from 'typeorm';
 import { Propietario } from 'src/propietario/propietario.entity';
+import { Contrato_alquiler } from 'src/contratos_alquiler/contratos_alquiler.entity';
+
 @Entity('propiedades')
 export class Propiedad {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => Propietario, (propietario) => propietario.id)
+  @ManyToOne(() => Propietario, (propietario) => propietario.propiedades)
   propietarioId: Propietario;
+
+  @OneToMany(() => Contrato_alquiler, (contrato) => contrato.propiedadId)
+  contratos: Contrato_alquiler[];
 
   @Column()
   direccion: string;

@@ -7,10 +7,10 @@ export class Contrato_alquiler {
   @PrimaryGeneratedColumn()
   contrato_alquilerID: number;
 
-  @ManyToOne(() => Propiedad, (propiedad) => propiedad.id)
+  @ManyToOne(() => Propiedad, (propiedad) => propiedad.contratos)
   propiedadId: Propiedad;
 
-  @ManyToOne(() => Cliente, (cliente) => cliente.id)
+  @ManyToOne(() => Cliente, (cliente) => cliente.contratos)
   clienteId: Cliente;
 
   @Column()

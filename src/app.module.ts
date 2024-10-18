@@ -17,6 +17,7 @@ import { MantenimientoController } from './mantenimiento/mantenimiento.controlle
 import { ClienteService } from './cliente/cliente.service';
 import { PropietarioService } from './propietario/propietario.service';
 import { MantenimientoService } from './mantenimiento/mantenimiento.service';
+import { PropiedadesService } from './propiedades/propiedades.service';
 
 @Module({
   imports: [
@@ -34,7 +35,7 @@ import { MantenimientoService } from './mantenimiento/mantenimiento.service';
   ],
   controllers: [AppController, ClienteController, ContratosAlquilerController, MantenimientoController, PagosController, PropiedadesController, PropietarioController],
 
-  providers: [AppService, ClienteService, PropietarioService,MantenimientoService],
+  providers: [AppService, ClienteService, PropietarioService,MantenimientoService,PropiedadesService],
 
 })
 export class AppModule { }

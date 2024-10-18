@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString, MaxLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString, MaxLength, IsArray, IsOptional } from 'class-validator';
 
 export class CrearPropietarioDto {
   @IsNotEmpty()
@@ -20,5 +20,13 @@ export class CrearPropietarioDto {
 
   @IsNotEmpty()
   @IsString()
-  password: string; 
+  password: string;
+
+  @IsOptional()
+  @IsArray()
+  propiedadesId: number[];
+
+  @IsOptional()
+  @IsArray()
+  contratosId: number[];
 }
