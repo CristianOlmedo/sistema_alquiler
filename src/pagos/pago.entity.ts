@@ -26,5 +26,5 @@ export class Pago {
   estado: 'pendiente' | 'completado';
 
   @Column({ nullable: true })
-  referencia?: string; // para agregar un código o referencia de la transacción
+  referencia?: string; 
 }
