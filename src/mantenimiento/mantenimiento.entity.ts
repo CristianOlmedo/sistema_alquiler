@@ -15,7 +15,7 @@ export class Mantenimiento {
   @Column('text')
   descripcionProblema: string;
 
-  @Column({ type: 'enum', enum: ['pendiente', 'en progreso', 'completado'] })
+  @Column({ type: 'enum', enum: ['pendiente', 'en_progreso', 'completado'] })
   estado: 'pendiente' | 'en_progreso' | 'completado';
 
   @Column('decimal', { nullable: true })

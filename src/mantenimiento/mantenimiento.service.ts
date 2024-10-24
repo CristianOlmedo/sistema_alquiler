@@ -8,6 +8,7 @@ import { Repository } from 'typeorm';
 import { Mantenimiento } from './mantenimiento.entity';
 import { CrearMantenimientoDto } from './dto/crear-mantenimiento.dto';
 import { Propiedad } from 'src/propiedades/propiedad.entity';
+import { ActualizarMantenimientoDto } from './dto/actualizar-mantenimiento.dto';
 
 @Injectable()
 export class MantenimientoService {
@@ -58,6 +59,19 @@ export class MantenimientoService {
 
     return mantenimiento;
   }
+
+    // Método para actualizar mantenimiento
+    async actualizar(id: number, cambios: ActualizarMantenimientoDto): Promise<Mantenimiento> {
+      const mantenimiento = await this.mantenimientoRepositorio.findOne({ where: { id } });
+      
+      if (!mantenimiento) {
+        throw new NotFoundException(`El mantenimiento con ID ${id} no existe.`);
+      }
+  
+      Object.assign(mantenimiento, cambios);  // Actualizar con los nuevos cambios
+  
+      return this.mantenimientoRepositorio.save(mantenimiento);  // Guardar los cambios
+    }
 
   // Eliminar un mantenimiento
   async remove(id: number): Promise<void> {
