@@ -55,6 +55,11 @@ export class PagoService {
     return await this.pagoRepositorio.save(pago);
   }
 
+    // Método para listar todos los pagos
+    async listarPagos(): Promise<Pago[]> {
+      return await this.pagoRepositorio.find(); // Recupera todos los pagos
+    }
+
 
   // Otras funciones como buscar pagos, eliminar pagos, etc.
 }

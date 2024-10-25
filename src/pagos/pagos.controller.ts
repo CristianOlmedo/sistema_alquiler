@@ -1,7 +1,8 @@
-import { Controller, Post, Body, Put, Param } from '@nestjs/common';
+import { Controller, Post, Body, Put, Param, Get } from '@nestjs/common';
 import { PagoService } from './pago.service';
 import { CrearPagoDto } from './dto/crear-pago.dto';
 import { ActualizarPagoDto } from './dto/actualizar-pago.dto';
+import { Pago } from './pago.entity';
 
 @Controller('pagos')
 export class PagosController {
@@ -17,5 +18,9 @@ export class PagosController {
     @Body() actualizarPagoDto: ActualizarPagoDto,
   ) {
     return this.pagoService.actualizar(id, actualizarPagoDto);
+  }
+  @Get()
+  async listarPagos(): Promise<Pago[]> {
+    return this.pagoService.listarPagos();
   }
 }
